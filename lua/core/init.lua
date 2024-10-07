@@ -70,6 +70,7 @@ opt.shada = { "'10", "<0", "s10", "h", "/10", "r/tmp" }
 opt.shiftround = true -- indent by N * vim.o.shiftwidth
 opt.showmode = false
 opt.signcolumn = "yes:1"
+opt.smartindent = true -- auto indent
 opt.termguicolors = true
 opt.undofile = true
 opt.virtualedit = "block" -- allow to extend cursors to void text area
