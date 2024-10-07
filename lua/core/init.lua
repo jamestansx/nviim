@@ -93,10 +93,6 @@ opt.listchars = {
     tab = "▹ ",     -- U+25B9
     trail = "·",    -- U+00B7
 }
-vim.opt.fillchars = {
-    foldclose = "▶", -- U+25B6
-    foldopen = "▼", -- U+25BC
-}
 
 opt.diffopt:append({
     "algorithm:histogram",
@@ -195,10 +191,10 @@ autocmd("BufNewFile", {
 -- keymaps
 ----------
 -- center current search result
-map("n", "n", "nzz")
-map("n", "N", "Nzz")
-map("n", "*", "*zz")
-map("n", "#", "#zz")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
+map("n", "*", "*zzzv")
+map("n", "#", "#zzzv")
 
 -- join line without moving cursors
 map("n", "J", "mzJ`z")
@@ -464,6 +460,24 @@ local spec = {
             },
             log_level = vim.log.levels.ERROR,
         },
+    },
+    {
+        "echasnovski/mini.pick",
+        version = "*",
+        config = function()
+            require("mini.pick").setup({
+                options = {
+                    content_from_bottom = true,
+                    cache = true,
+                },
+            })
+
+            vim.ui.select = MiniPick.ui_select
+
+            map("n", "<leader>f", "<cmd>Pick files<cr>")
+            map("n", "<leader>g", "<cmd>Pick grep<cr>")
+            map("n", "yop", "<cmd>Pick resume<cr>")
+        end,
     },
 }
 
